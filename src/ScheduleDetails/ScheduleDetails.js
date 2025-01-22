@@ -112,11 +112,15 @@ function ScheduleDetails() {
 
   return (
     <div className="show-container">
-      <h3>{schedule.attributes.title}</h3>
-      <h4>Date:{schedule.attributes.date}</h4>
-      <button onClick={goHome} className="home-btn" aria-labelledby="Home">
-        Go Home
-      </button>
+      <header className="schedule-header">
+        <div clasName="header-titles">
+          <h1>{schedule.attributes.title}</h1>
+          <h2>Date:{schedule.attributes.date}</h2>
+        </div>
+        <button onClick={goHome} className="home-btn" aria-labelledby="Home">
+          Go Home
+        </button>
+      </header>
       <div className="sort-dropdown">
         <label>Sort Shows: </label>
         <select id="sortOptions" onChange={sortShows} value={sortOption}>

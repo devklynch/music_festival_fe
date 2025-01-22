@@ -19,10 +19,11 @@ function Container({ schedules }) {
                 title={schedule.attributes.title}
                 date={schedule.attributes.date}
                 user_id={schedule.attributes.user_id}
-              />
-              <Link to={`/schedules/${schedule.id}`}>
-                <button>Schedule Details</button>
-              </Link>
+              >
+                <Link to={`/schedules/${schedule.id}`}>
+                  <button className="schedule-btn">Schedule Details</button>
+                </Link>
+              </Schedule>
             </div>
           ))
         )}

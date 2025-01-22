@@ -3,10 +3,40 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  border: 2px solid #006b69;
   border-radius: 8px;
   padding: 1em;
-  background-color: #f7f5dd;
+  background-color: #006b69;
   margin: 10px;
+  color: #f7f5dd;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: auto;
+  max-height: 200px;
+}
+
+.show-card h4 {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.show-card h5 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 5px;
+}
+
+.show-card p {
+  font-weight: 600;
+}
+
+.remove-btn {
+  margin-top: 10px;
+  margin-bottom: -8px;
+  font-size: 1em;
+  background-color: #f7f5dd;
+  color: #006b69;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px;
 }

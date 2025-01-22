@@ -37,21 +37,21 @@ function Shows({
   const getLocationIcon = (location) => {
     switch (location) {
       case "Gobi":
-        return <GiDesertSkull className="location-icon" />;
+        return <GiDesertSkull className="location-icon" size={70} />;
       case "Outdoor Theatre":
-        return <GiWorld className="location-icon" />;
+        return <GiWorld className="location-icon" size={70} />;
       case "Sonora":
-        return <GiLindenLeaf className="location-icon" />;
+        return <GiLindenLeaf className="location-icon" size={70} />;
       case "Mojave":
-        return <GiFlowerEmblem className="location-icon" />;
+        return <GiFlowerEmblem className="location-icon" size={70} />;
       case "Sahara":
-        return <GiDesert className="location-icon" />;
+        return <GiDesert className="location-icon" size={70} />;
       case "Yuma":
-        return <GiMusicSpell className="location-icon" />;
+        return <GiMusicSpell className="location-icon" size={70} />;
       case "Coachella":
-        return <GiPalmTree className="location-icon" />;
+        return <GiPalmTree className="location-icon" size={70} />;
       default:
-        return <GiPalmTree className="location-icon" />;
+        return <GiPalmTree className="location-icon" size={70} />;
     }
   };
   return (
@@ -60,7 +60,9 @@ function Shows({
       <h5>Stage: {location}</h5>
       <p>Show Time: {`${formatTime(start_time)} - ${formatTime(end_time)}`}</p>
       {getLocationIcon(location)}
-      <button onClick={handleDelete}>Remove Show</button>
+      <button className="remove-btn" onClick={handleDelete}>
+        Remove Show
+      </button>
     </div>
   );
 }
