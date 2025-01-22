@@ -9,6 +9,7 @@ function App() {
     <Routes>
       <Route path="/schedules" element={<Main />} />
       <Route path="/schedules/:schedule_id" element={<ScheduleDetails />} />
+      <Route path="*" element={<h2>This page doesn't exist</h2>} />
     </Routes>
   );
 }

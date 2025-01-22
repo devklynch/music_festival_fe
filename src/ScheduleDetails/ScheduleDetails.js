@@ -1,5 +1,5 @@
 import "./ScheduleDetails.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Shows from "../Shows/Shows";
 
@@ -10,6 +10,7 @@ function ScheduleDetails() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [sortOption, setSortOption] = useState("");
+  const navigate = useNavigate();
 
   const fetchShows = async (sortBy = null, order = null) => {
     try {
@@ -105,10 +106,17 @@ function ScheduleDetails() {
     );
   });
 
+  const goHome = () => {
+    navigate("/schedules");
+  };
+
   return (
     <div className="show-container">
       <h3>{schedule.attributes.title}</h3>
       <h4>Date:{schedule.attributes.date}</h4>
+      <button onClick={goHome} className="home-btn" aria-labelledby="Home">
+        Go Home
+      </button>
       <div className="sort-dropdown">
         <label>Sort Shows: </label>
         <select id="sortOptions" onChange={sortShows} value={sortOption}>
