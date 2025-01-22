@@ -34,7 +34,7 @@ function Main() {
     return <p>Loading schedules</p>;
   }
   return (
-    <div>
+    <div className="main-page">
       <h1>Music Festival Schedules</h1>
       <Container schedules={allSchedules} />
     </div>

@@ -1,0 +1,11 @@
+.main-page {
+  background-color: #ffe4e5;
+  color: #006b69;
+  height: 100vh;
+}
+
+h1 {
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
