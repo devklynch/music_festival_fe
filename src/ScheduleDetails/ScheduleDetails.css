@@ -1,6 +1,4 @@
-.show-container {
-  display: flex;
-  flex-wrap: wrap;
+.full-show-page {
   justify-content: center;
   text-align: center;
   background-color: #ffe4e5;
@@ -10,7 +8,7 @@
 
 .schedule-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 20px;
 }
@@ -47,4 +45,10 @@
 
 .home-btn:hover {
   background-color: #0056b3;
+}
+
+.show-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

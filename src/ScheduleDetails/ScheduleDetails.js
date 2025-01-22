@@ -111,7 +111,7 @@ function ScheduleDetails() {
   };
 
   return (
-    <div className="show-container">
+    <div className="full-show-page">
       <header className="schedule-header">
         <div clasName="header-titles">
           <h1>{schedule.attributes.title}</h1>
