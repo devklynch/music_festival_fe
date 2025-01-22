@@ -59,9 +59,6 @@ function Shows({
       <h4>{artist}</h4>
       <h5>Stage: {location}</h5>
       <p>Show Time: {`${formatTime(start_time)} - ${formatTime(end_time)}`}</p>
-      <p>
-        Show Time: {start_time} - {end_time}
-      </p>
       {getLocationIcon(location)}
       <button onClick={handleDelete}>Remove Show</button>
     </div>

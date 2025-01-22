@@ -9,6 +9,7 @@ function ScheduleDetails() {
   const [schedule, setSchedule] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [sortOption, setSortOption] = useState("");
 
   const fetchShows = async (sortBy = null, order = null) => {
     try {
@@ -39,14 +40,17 @@ function ScheduleDetails() {
     fetchShows();
   }, []);
 
-  if (isLoading) {
-    return <p>Loading schedules</p>;
-  }
-
-  const sortShows = (sortBy, order) => {
+  const sortShows = (event) => {
+    const [sortBy, order] = event.target.value.split(",");
+    const selectedOption = event.target.value;
+    setSortOption(selectedOption);
     setIsLoading(true);
     fetchShows(sortBy, order);
   };
+
+  if (isLoading) {
+    return <p>Loading schedules</p>;
+  }
 
   const removeShow = async (show_id) => {
     setIsLoading(true);
@@ -73,6 +77,8 @@ function ScheduleDetails() {
             ),
           },
         }));
+        const [sortBy, order] = sortOption.split(",");
+        fetchShows(sortBy, order);
       } else {
         const errorData = await response.json();
         setError(
@@ -100,22 +106,22 @@ function ScheduleDetails() {
   });
 
   return (
-    <div>
+    <div className="show-container">
       <h3>{schedule.attributes.title}</h3>
       <h4>Date:{schedule.attributes.date}</h4>
-      <div className="sort-buttons">
-        <button onClick={() => sortShows("start_time", "asc")}>
-          Sort by Start Time (Earliest to Latest)
-        </button>
-        <button onClick={() => sortShows("start_time", "desc")}>
-          Sort by Start Time (Latest to Earliest)
-        </button>
-        <button onClick={() => sortShows("artist", "asc")}>
-          Sort by Artist Name (A-Z)
-        </button>
-        <button onClick={() => sortShows("artist", "desc")}>
-          Sort by Artist Name (Z-A)
-        </button>
+      <div className="sort-dropdown">
+        <label>Sort Shows: </label>
+        <select id="sortOptions" onChange={sortShows} value={sortOption}>
+          <option value="">Sort Options</option>
+          <option value="start_time,asc">
+            Start Time (Earliest to Latest)
+          </option>
+          <option value="start_time,desc">
+            Start Time (Latest to Earliest)
+          </option>
+          <option value="artist,asc">Artist Name (A-Z)</option>
+          <option value="artist,desc">Artist Name (Z-A)</option>
+        </select>
       </div>
       <section className="show-container">{showList}</section>
     </div>
