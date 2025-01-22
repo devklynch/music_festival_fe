@@ -10,11 +10,15 @@ function ScheduleDetails() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  const fetchShows = async () => {
+  const fetchShows = async (sortBy = null, order = null) => {
     try {
-      const response = await fetch(
-        `http://localhost:3000/api/v1/schedules/${schedule_id}`
-      );
+      let url = `http://localhost:3000/api/v1/schedules/${schedule_id}`;
+      if (sortBy && order) {
+        url += `?sort_by=${sortBy}&order=${order}`;
+      }
+
+      const response = await fetch(url);
+
       if (response.ok) {
         const data = await response.json();
         setSchedule(data.data[0]);
@@ -38,6 +42,12 @@ function ScheduleDetails() {
   if (isLoading) {
     return <p>Loading schedules</p>;
   }
+
+  const sortShows = (sortBy, order) => {
+    setIsLoading(true);
+    fetchShows(sortBy, order);
+  };
+
   const removeShow = async (show_id) => {
     setIsLoading(true);
     setError(null);
@@ -93,6 +103,20 @@ function ScheduleDetails() {
     <div>
       <h3>{schedule.attributes.title}</h3>
       <h4>Date:{schedule.attributes.date}</h4>
+      <div className="sort-buttons">
+        <button onClick={() => sortShows("start_time", "asc")}>
+          Sort by Start Time (Earliest to Latest)
+        </button>
+        <button onClick={() => sortShows("start_time", "desc")}>
+          Sort by Start Time (Latest to Earliest)
+        </button>
+        <button onClick={() => sortShows("artist", "asc")}>
+          Sort by Artist Name (A-Z)
+        </button>
+        <button onClick={() => sortShows("artist", "desc")}>
+          Sort by Artist Name (Z-A)
+        </button>
+      </div>
       <section className="show-container">{showList}</section>
     </div>
   );
