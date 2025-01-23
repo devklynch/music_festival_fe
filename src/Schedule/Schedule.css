@@ -12,6 +12,12 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.schedule-card:hover {
+  box-shadow: 0 12px 12px rgba(142, 57, 57, 0.1);
+  background-color: #05928f;
+  border: 3px solid #006b69;
+}
+
 .title {
   font-size: 1.5em;
   margin-bottom: 5px;
