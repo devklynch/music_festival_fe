@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Container({ schedules }) {
   console.log("Schedule", schedules[0].attributes.title);
-  //how to access data schedules.schedules[0].attributes.title
+
   return (
     <div>
       <div className="all-schedules-cards">

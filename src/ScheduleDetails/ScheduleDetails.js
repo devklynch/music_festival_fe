@@ -135,7 +135,11 @@ function ScheduleDetails() {
           <option value="artist,desc">Artist Name (Z-A)</option>
         </select>
       </div>
-      <section className="show-container">{showList}</section>
+      {schedule.attributes.shows.length === 0 ? (
+        <p>No Shows Currently</p>
+      ) : (
+        <section className="show-container">{showList}</section>
+      )}
     </div>
   );
 }
