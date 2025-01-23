@@ -1,5 +1,5 @@
 import "./ScheduleDetails.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Shows from "../Shows/Shows";
 
@@ -9,6 +9,8 @@ function ScheduleDetails() {
   const [schedule, setSchedule] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [sortOption, setSortOption] = useState("");
+  const navigate = useNavigate();
 
   const fetchShows = async (sortBy = null, order = null) => {
     try {
@@ -39,14 +41,17 @@ function ScheduleDetails() {
     fetchShows();
   }, []);
 
-  if (isLoading) {
-    return <p>Loading schedules</p>;
-  }
-
-  const sortShows = (sortBy, order) => {
+  const sortShows = (event) => {
+    const [sortBy, order] = event.target.value.split(",");
+    const selectedOption = event.target.value;
+    setSortOption(selectedOption);
     setIsLoading(true);
     fetchShows(sortBy, order);
   };
+
+  if (isLoading) {
+    return <p>Loading schedules</p>;
+  }
 
   const removeShow = async (show_id) => {
     setIsLoading(true);
@@ -73,6 +78,8 @@ function ScheduleDetails() {
             ),
           },
         }));
+        const [sortBy, order] = sortOption.split(",");
+        fetchShows(sortBy, order);
       } else {
         const errorData = await response.json();
         setError(
@@ -99,23 +106,34 @@ function ScheduleDetails() {
     );
   });
 
+  const goHome = () => {
+    navigate("/schedules");
+  };
+
   return (
-    <div>
-      <h3>{schedule.attributes.title}</h3>
-      <h4>Date:{schedule.attributes.date}</h4>
-      <div className="sort-buttons">
-        <button onClick={() => sortShows("start_time", "asc")}>
-          Sort by Start Time (Earliest to Latest)
+    <div className="full-show-page">
+      <header className="schedule-header">
+        <div clasName="header-titles">
+          <h1>{schedule.attributes.title}</h1>
+          <h2>Date:{schedule.attributes.date}</h2>
+        </div>
+        <button onClick={goHome} className="home-btn" aria-labelledby="Home">
+          Go Home
         </button>
-        <button onClick={() => sortShows("start_time", "desc")}>
-          Sort by Start Time (Latest to Earliest)
-        </button>
-        <button onClick={() => sortShows("artist", "asc")}>
-          Sort by Artist Name (A-Z)
-        </button>
-        <button onClick={() => sortShows("artist", "desc")}>
-          Sort by Artist Name (Z-A)
-        </button>
+      </header>
+      <div className="sort-dropdown">
+        <label>Sort Shows: </label>
+        <select id="sortOptions" onChange={sortShows} value={sortOption}>
+          <option value="">Sort Options</option>
+          <option value="start_time,asc">
+            Start Time (Earliest to Latest)
+          </option>
+          <option value="start_time,desc">
+            Start Time (Latest to Earliest)
+          </option>
+          <option value="artist,asc">Artist Name (A-Z)</option>
+          <option value="artist,desc">Artist Name (Z-A)</option>
+        </select>
       </div>
       <section className="show-container">{showList}</section>
     </div>

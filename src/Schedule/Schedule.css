@@ -3,10 +3,31 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
+  border: 2px solid #006b69;
   border-radius: 8px;
   padding: 1em;
-  background-color: #f7f5dd;
+  background-color: #006b69;
+  color: #f7f5dd;
   margin: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-card:hover {
+  box-shadow: 0 12px 12px rgba(142, 57, 57, 0.1);
+  background-color: #05928f;
+  border: 3px solid #006b69;
+}
+
+.title {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+.date {
+  font-size: 1.25em;
+  margin: 5px;
+}
+
+.user-id {
+  font-weight: 600;
 }
