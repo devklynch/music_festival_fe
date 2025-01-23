@@ -1,7 +1,6 @@
 import "./Schedule.css";
 
 function Schedule({ id, title, date, user_id, children }) {
-  console.log("Title", title);
   return (
     <div className="schedule-card">
       <h2 className="title">{title}</h2>

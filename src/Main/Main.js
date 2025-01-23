@@ -13,7 +13,6 @@ function Main() {
       if (response.ok) {
         const data = await response.json();
         setAllSchedules(data.data);
-        //console.log("All Schedules", Array.isArray(data.data));
       } else {
         throw new Error(
           "Error fetching all schedules, please try again in a few minutes"
@@ -33,6 +32,11 @@ function Main() {
   if (isLoading) {
     return <p>Loading schedules</p>;
   }
+
+  if (error) {
+    return <p className="error-message">{error}</p>;
+  }
+
   return (
     <div className="main-page">
       <h1>Music Festival Schedules</h1>

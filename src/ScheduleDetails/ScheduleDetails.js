@@ -135,6 +135,7 @@ function ScheduleDetails() {
           <option value="artist,desc">Artist Name (Z-A)</option>
         </select>
       </div>
+      {error && <p className="error-message">{error}</p>}
       {schedule.attributes.shows.length === 0 ? (
         <p>No Shows Currently</p>
       ) : (

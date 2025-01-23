@@ -3,8 +3,6 @@ import Schedule from "../Schedule/Schedule";
 import { Link } from "react-router-dom";
 
 function Container({ schedules }) {
-  console.log("Schedule", schedules[0].attributes.title);
-
   return (
     <div>
       <div className="all-schedules-cards">
