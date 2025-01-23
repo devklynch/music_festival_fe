@@ -24,6 +24,7 @@ Run npm install
 Run npm start to view the site
 
 ## A Demonstration
+![MusicFE](https://github.com/user-attachments/assets/3e81c72f-76ec-4de1-bda9-92f0fa9a43e6)
 
 ## Links
 
@@ -31,3 +32,5 @@ Run npm start to view the site
 - **GitHub Back End Repo:** https://github.com/devklynch/music_festival_be
 
 ## Additional Information
+- LinkedIn https://www.linkedin.com/in/devlin-lynch
+- GitHub Profile https://github.com/devklynch
