@@ -5,7 +5,6 @@ import Shows from "../Shows/Shows";
 
 function ScheduleDetails() {
   const { schedule_id } = useParams();
-  console.log(schedule_id);
   const [schedule, setSchedule] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
