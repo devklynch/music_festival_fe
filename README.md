@@ -6,7 +6,7 @@ This project focused on a full stack app for Music Festival Organization Service
 
 This focused on making an admin view for different users' festival schedules where you have access to see all schedules and look into the schedule's lineup as well as have the ability to remove a show from a user's schedule
 
-##Features
+## Features
 
 - A schedule's page to see all schedules
 - The ability the specific shows for that schedule, like artist, location, and set times
